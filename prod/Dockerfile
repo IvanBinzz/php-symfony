@@ -20,6 +20,8 @@ RUN docker-php-ext-configure bcmath
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install sockets
+RUN docker-php-ext-install zip
+
 
 # git libssl
 RUN apt-get update \
