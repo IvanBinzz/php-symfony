@@ -4,7 +4,7 @@ LABEL maintainer="ivan.binzz.borysenko@gmail.com"
 ENV RABBITMQ_VERSION v0.8.0
 ENV PHP_AMQP_VERSION v1.9.3
 ENV PHP_REDIS_VERSION 3.1.4
-ENV PHP_IMAGIC_VERSION 3.4.3
+ENV PHP_IMAGICK_VERSION 3.4.3
 ENV TIMEZONE "Europe/Kiev"
 ENV BUILD_DEPS git libpq-dev libzip-dev libicu-dev libssl-dev libmagickwand-dev libmagickcore-dev unzip cmake
 
@@ -49,13 +49,13 @@ RUN git clone --branch ${PHP_REDIS_VERSION} https://github.com/phpredis/phpredis
     && rm -r /tmp/phpredis
 
 # IMAGIC
-RUN git clone --branch ${PHP_IMAGIC_VERSION} https://github.com/mkoppanen/imagick.git /tmp/imagic \
-    && cd /tmp/imagic \
+RUN git clone --branch ${PHP_IMAGICK_VERSION} https://github.com/mkoppanen/imagick.git /tmp/imagick \
+    && cd /tmp/imagick \
     && phpize  \
     && ./configure  \
     && make  \
     && make install \
-    && rm -r /tmp/imagic
+    && rm -r /tmp/imagick
 
 
 RUN docker-php-ext-configure bcmath --enable-bcmath
